@@ -14,6 +14,7 @@ export const fetchWeather = async (lo: GeoPosition): Promise<WeatherResponse> =>
 };
 
 export const mapIcon: Record<string, string> = {
+  "": "./svg/clear-day.svg",
   "01d": "./svg/clear-day.svg",
   "01n": "./svg/clear-night.svg",
   "02d": "./svg/partly-cloudy-day.svg",

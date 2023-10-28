@@ -23,7 +23,7 @@ function App() {
           icon={weather?.list[0]?.weather[0]?.icon}
           city={weather?.city?.name}
           temp={weather?.list[0]?.main?.temp}
-          description={weather?.list[0]?.weather[0]?.description || ""}
+          description={weather?.list[0]?.weather[0]?.description}
           low={weather?.list[0]?.main?.temp_min}
           max={weather?.list[0]?.main?.temp_max}
           loading={!weather}

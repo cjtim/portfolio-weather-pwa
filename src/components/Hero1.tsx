@@ -2,12 +2,12 @@ import { Img, Skeleton, Stack, Text } from "@chakra-ui/react";
 import { mapIcon } from "../tools/weatherAPI";
 
 interface Props {
-  icon: string;
-  city: string;
-  temp: string;
-  description: string;
-  low: string;
-  max: string;
+  icon?: string;
+  city?: string;
+  temp?: number;
+  description?: string;
+  low?: number;
+  max?: number;
   loading: boolean;
 }
 
@@ -31,7 +31,7 @@ export const Hero1: React.FC<Props> = ({
       ) : (
         <>
           <Img
-            src={mapIcon[icon]}
+            src={mapIcon[icon || ""]}
             alt={description}
             aria-aria-label={description}
             w="48"
