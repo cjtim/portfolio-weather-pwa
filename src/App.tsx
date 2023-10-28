@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 
-import { Box, Center, Stack, Text } from "@chakra-ui/react";
+import { Center, Stack } from "@chakra-ui/react";
 import { addServiceWorker } from "./tools/service-worker";
 import { useGeo } from "./hooks/useGeo";
 import { requestNotification } from "./tools/notification";
+import { Hero1 } from "./components/Hero1";
+import { NextHours } from "./components/NextHours";
 
 const init = () => {
   addServiceWorker();
@@ -12,18 +14,22 @@ const init = () => {
 
 function App() {
   useEffect(() => init(), []);
-  const [geo, weather] = useGeo();
+  const [, weather] = useGeo();
 
   return (
     <Center w="100vw" h="100vh">
-      <Box borderWidth="1px" borderRadius="lg" w="50%" h="50%">
-        <Stack>
-          <Text>{weather.city.name}</Text>
-          <Text>
-            {geo?.lat} {geo?.long}
-          </Text>
-        </Stack>
-      </Box>
+      <Stack>
+        <Hero1
+          icon={weather?.list[0]?.weather[0]?.icon}
+          city={weather?.city?.name}
+          temp={weather?.list[0]?.main?.temp}
+          description={weather?.list[0]?.weather[0]?.description || ""}
+          low={weather?.list[0]?.main?.temp_min}
+          max={weather?.list[0]?.main?.temp_max}
+          loading={!weather}
+        />
+        <NextHours lists={weather?.list || []} />
+      </Stack>
     </Center>
   );
 }
