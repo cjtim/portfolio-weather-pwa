@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { Center, Stack } from "@chakra-ui/react";
 import { addServiceWorker } from "./tools/service-worker";
 import { useGeo } from "./hooks/useGeo";
-import { requestNotification } from "./tools/notification";
+// import { requestNotification } from "./tools/notification";
 import { Hero1 } from "./components/Hero1";
 import { NextHours } from "./components/NextHours";
 
 const init = () => {
   addServiceWorker();
-  requestNotification();
+  // requestNotification();
 };
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Center w="100vw" h="100vh">
-      <Stack>
+      <Stack w="container.2xl" alignItems="center">
         <Hero1
           icon={weather?.list[0]?.weather[0]?.icon}
           city={weather?.city?.name}
