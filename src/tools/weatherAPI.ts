@@ -1,7 +1,7 @@
 import { GeoPosition } from "../hooks/useGeo";
 import { WeatherResponse } from "../interfaces/openweathermap";
 
-const KEY = import.meta.env.REACT_APP_WEATHER_API || ""
+const KEY = import.meta.env.VITE_WEATHER_API || ""
 
 export const fetchWeather = async (lo: GeoPosition): Promise<WeatherResponse> => {
   const URL = "https://api.openweathermap.org/data/2.5/forecast";
