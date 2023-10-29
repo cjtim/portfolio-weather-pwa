@@ -1,4 +1,4 @@
-import { Img, Skeleton, Stack, Text } from "@chakra-ui/react";
+import { Flex, Img, Skeleton, Stack, Text } from "@chakra-ui/react";
 import { mapIcon } from "../tools/weatherAPI";
 
 interface Props {
@@ -33,11 +33,21 @@ export const Hero1: React.FC<Props> = ({
           <Img
             src={mapIcon[icon || ""]}
             alt={description}
-            aria-aria-label={description}
+            aria-label={description}
             w="48"
           />
-          {city ? <Text fontSize="2xl">{city}</Text> : <Skeleton />}
-          <Text fontSize="2xl">{temp}</Text>
+          <Text fontSize="2xl">{city}</Text>
+          <Flex alignItems="flex-start">
+            <Text fontSize="2xl">{temp}</Text>
+            <Text fontSize="2xl">°F</Text>
+            {/* <Img
+              src={"/svg/fahrenheit.svg"}
+              alt={description}
+              aria-aria-label={description}
+              w="8"
+            /> */}
+          </Flex>
+
           <Text textTransform="capitalize" fontSize="2xl">
             {description}
           </Text>

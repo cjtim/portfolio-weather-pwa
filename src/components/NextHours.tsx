@@ -21,7 +21,7 @@ export const NextHours: React.FC<Props> = ({ lists }: Props) => {
           <Img
             src={mapIcon[l?.weather[0]?.icon]}
             alt={l?.weather[0]?.description}
-            aria-aria-label={l?.weather[0]?.description}
+            aria-label={l?.weather[0]?.description}
           />
           <Text
             textTransform="capitalize"

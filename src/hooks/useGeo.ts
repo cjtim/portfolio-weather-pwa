@@ -14,13 +14,31 @@ export const useGeo = (): [GeoPosition | null, WeatherResponse | null] => {
 
   useEffect(() => {
     console.log(`geo changes ${geo}`)
-    if (geo) fetchWeather(geo).then((data) => setWeather(data));
+    if (geo) fetchWeather(geo).then((data) =>
+      setWeather(data)
+    );
   }, [geo]);
 
   useEffect(() => {
     (async () => {
+      // cache 
+      try {
+        const cache = localStorage.getItem('location')
+        if (cache) {
+          const json = JSON.parse(cache)
+          if (json.lat && json.long) {
+            setGeo(json)
+          } else {
+            throw new Error('Invalid json')
+          }
+        }
+      } catch (e) {
+        localStorage.removeItem('location')
+      }
+
       console.log("requesting geoLocation");
       const resp = await requestLocation();
+      localStorage.setItem('location', JSON.stringify(resp))
       setGeo(resp);
     })();
   }, []);
