@@ -15,9 +15,9 @@ export const NextHours: React.FC<Props> = ({ lists }: Props) => {
       w="container.sm"
       overflowX="auto"
     >
-      {lists.map((l, idx) => (
+      {lists.slice(1).map((l, idx) => (
         <Stack key={`nexthour-${idx}`} alignItems={"center"} w="sm">
-          <Text>{idx === 0 ? "Now" : new Date(l?.dt*1000).getHours() + ":00"}</Text>
+          <Text>{new Date(l?.dt*1000).getHours() + ":00"}</Text>
           <Img
             src={mapIcon[l?.weather[0]?.icon]}
             alt={l?.weather[0]?.description}
@@ -30,7 +30,7 @@ export const NextHours: React.FC<Props> = ({ lists }: Props) => {
           >
             {l?.weather[0]?.description}
           </Text>
-          <Text>{l?.main?.temp}</Text>
+          <Text>{Math.floor(l?.main?.temp)}°F</Text>
         </Stack>
       ))}
     </Flex>

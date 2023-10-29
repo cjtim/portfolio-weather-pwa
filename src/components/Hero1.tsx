@@ -29,30 +29,26 @@ export const Hero1: React.FC<Props> = ({
           <Skeleton h="8" w="48" />
         </>
       ) : (
-        <>
+        <Flex alignItems="center">
           <Img
             src={mapIcon[icon || ""]}
             alt={description}
             aria-label={description}
             w="48"
           />
-          <Text fontSize="2xl">{city}</Text>
-          <Flex alignItems="flex-start">
-            <Text fontSize="2xl">{temp}</Text>
-            <Text fontSize="2xl">°F</Text>
-            {/* <Img
-              src={"/svg/fahrenheit.svg"}
-              alt={description}
-              aria-aria-label={description}
-              w="8"
-            /> */}
-          </Flex>
+          <Stack>
+            <Text fontSize="2xl">{city}</Text>
+            <Flex alignItems="flex-start">
+              <Text fontSize="2xl">{Math.floor(temp || 0)}</Text>
+              <Text fontSize="2xl">°F</Text>
+            </Flex>
 
-          <Text textTransform="capitalize" fontSize="2xl">
-            {description}
-          </Text>
-          <Text>{`Hi:${max} Low:${low}`}</Text>
-        </>
+            <Text textTransform="capitalize" fontSize="2xl">
+              {description}
+            </Text>
+            <Text>{`Hi:${max} Low:${low}`}</Text>
+          </Stack>
+        </Flex>
       )}
     </Stack>
   );
