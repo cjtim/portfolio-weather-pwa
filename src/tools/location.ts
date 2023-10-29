@@ -14,7 +14,7 @@ export const requestLocation = (): Promise<GeoPosition> => {
       },
       {
         enableHighAccuracy: false,
-        maximumAge: 3600 * 3
+        maximumAge: 10800 * 3
       }
     );
   });
